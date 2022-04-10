@@ -1,14 +1,9 @@
-import {
-  motion,
-  useViewportScroll,
-  useTransform,
-  useAnimation,
-} from "framer-motion";
+import { motion, useViewportScroll, useAnimation } from "framer-motion";
 import { useEffect, useState } from "react";
 
 const icon = {
   hidden: {
-    pathLength: 0,
+    pathLength: 1,
     fill: "rgba(255, 255, 255, 0)",
   },
   visible: {
@@ -48,7 +43,7 @@ const MovieHeader = () => {
   }, [scrollY, navAnimation, InputAnimation]);
 
   return (
-    <div className="relative">
+    <div className="relative z-10">
       <motion.div
         variants={navVariants}
         animate={navAnimation}
@@ -57,7 +52,7 @@ const MovieHeader = () => {
         <div className="flex justify-center items-center space-x-4">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="h-7 w-7"
+            className="h-7 w-7 text-white"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -84,21 +79,35 @@ const MovieHeader = () => {
           <div className="text-xs font-semibold cursor-pointer">Movie</div>
           <div className="text-xs font-semibold cursor-pointer">TV</div>
         </div>
-        <div>
+        <div className="mr-10">
           {searchOpen ? (
             <motion.input
-              className="py-1 pl-8 w-56 border-black bg-transparent"
-              variants={navVariants}
+              className="py-1 pl-8 border-current outline-current outline-none bg-transparent text-sm "
+              placeholder="Serach Movies or TV shows..."
+              initial={{
+                opacity: 0,
+                width: 0,
+              }}
+              animate={{
+                opacity: 1,
+                width: "224px",
+              }}
+              transition={{
+                damping: 0,
+              }}
             />
           ) : null}
           <motion.svg
             xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5 cursor-pointer absolute top-8 right-5"
+            className="h-5 w-5 cursor-pointer absolute top-8 right-5 text-current"
             viewBox="0 0 20 20"
             fill="currentColor"
             onClick={toggleSearch}
             animate={{
-              x: searchOpen ? -195 : 0,
+              x: searchOpen ? -235 : 0,
+            }}
+            transition={{
+              damping: 0,
             }}
           >
             <path
