@@ -1,8 +1,9 @@
 import Image from "next/image";
 import { useState } from "react";
-import { IMovie } from "../apis/getMovies";
 import { makeImagePath } from "../libs/utils";
 import { motion, AnimatePresence } from "framer-motion";
+import { IMovie } from "../libs/types";
+import Link from "next/link";
 
 interface IMoviesprops {
   movies: IMovie[];
@@ -78,14 +79,18 @@ const Movies: React.FC<IMoviesprops> = ({ movies }) => {
               key={movie.id}
               className="relative w-52 h-32 bg-gray-300"
             >
-              <Image
-                key={movie.backdrop_path}
-                className="absolute object-cover"
-                alt="background image"
-                src={makeImagePath(movie.backdrop_path)}
-                layout="fill"
-                priority
-              />
+              <Link href={`/movies/${movie.id}`}>
+                <a>
+                  <Image
+                    key={movie.backdrop_path}
+                    className="absolute object-cover"
+                    alt="background image"
+                    src={makeImagePath(movie.backdrop_path)}
+                    layout="fill"
+                    priority
+                  />
+                </a>
+              </Link>
             </motion.div>
           ))}
         </motion.div>
