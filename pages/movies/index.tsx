@@ -1,8 +1,6 @@
 import type { NextPage } from "next";
 import Image from "next/image";
-import { Suspense } from "react";
 import { dehydrate, QueryClient, useQuery } from "react-query";
-import { getMovieOrTV } from "../../apis/getMovies";
 import MovieHeader from "../../components/MovieHeader";
 import Movies from "../../components/Movies";
 import { useMovies } from "../../libs/hooks/movie.hook";
