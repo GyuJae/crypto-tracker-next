@@ -34,3 +34,22 @@ export interface ICoin {
 
 export const getCoins = async () =>
   fetch("https://api.coinpaprika.com/v1/tickers").then((res) => res.json());
+
+export interface IHistorical {
+  time_open: string;
+  time_close: string;
+  open: number;
+  high: number;
+  low: number;
+  close: number;
+  volume: number;
+  market_cap: number;
+}
+
+export const getCoinHistory = async (coin_id: string) => {
+  const endDate = Math.floor(Date.now() / 1000);
+  const startDate = endDate - 60 * 60 * 24 * 7 * 2;
+  return fetch(
+    `https://api.coinpaprika.com/v1/coins/${coin_id}/ohlcv/historical?start=${startDate}&end=${endDate}`
+  ).then((res) => res.json());
+};

@@ -19,7 +19,8 @@
     "react-dom": "18.0.0",
     "react-hook-form": "^7.29.0",
     "react-query": "^3.34.19",
-    "recoil": "^0.7.0"
+    "recoil": "^0.7.0",
+    "victory": "^36.3.2"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.4",

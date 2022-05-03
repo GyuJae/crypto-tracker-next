@@ -1,5 +1,5 @@
 import type { NextPage } from "next";
-import Image from "next/image";
+
 import { useRouter } from "next/router";
 import { dehydrate, QueryClient, useQuery } from "react-query";
 import { getCoins, ICoin } from "../apis/getCoins";
@@ -19,7 +19,7 @@ const Home: NextPage = () => {
     PAGE_DATA_AMOUNT * +page
   );
   return (
-    <div className="flex justify-center py-10">
+    <div className="flex justify-center py-10 bg-slate-900">
       <table className="text-white  bg-gray-300 bg-opacity-10 rounded-md">
         <thead className="border-white">
           <tr>
@@ -37,11 +37,17 @@ const Home: NextPage = () => {
             <tr
               key={coin.id}
               className="hover:bg-gray-700 hover:text-blue-700  border-b-2 border-gray-100 cursor-pointer"
+              onClick={() =>
+                router.push({
+                  pathname: "/coins/[id]",
+                  query: { id: coin.id },
+                })
+              }
             >
               <td className="text-center p-1">{coin.rank}</td>
               <td className="p-1 text-center">{coin.name}</td>
-              <td className="p-1 text-center">
-                ${coin.quotes.USD.price.toFixed(2)}
+              <td className="p-1 text-left">
+                $ {coin.quotes.USD.price.toFixed(2)}
               </td>
               <td
                 className={cls(
@@ -73,8 +79,8 @@ const Home: NextPage = () => {
               >
                 {coin.quotes.USD.percent_change_7d}%
               </td>
-              <td className="p-1 text-center">
-                ${(+coin.quotes.USD.volume_24h.toFixed()).toLocaleString()}
+              <td className="p-1 text-left">
+                $ {(+coin.quotes.USD.volume_24h.toFixed()).toLocaleString()}
               </td>
             </tr>
           ))}
