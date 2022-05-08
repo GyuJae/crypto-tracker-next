@@ -1,5 +1,5 @@
 import type { NextPage } from "next";
-import { motion, Variants } from "framer-motion";
+import { AnimatePresence, motion, Variants } from "framer-motion";
 
 import Animation from "@components/animations/Animation";
 import VariantsComponent from "@components/animations/Variants";
@@ -11,10 +11,11 @@ import Svg from "@components/animations/Svg";
 import InfinityBox from "@components/animations/InfinityBox";
 import ChildrenVar from "@components/animations/ChildrenVar";
 import Toggle from "@components/animations/Toggle";
+import SharedLayoutPrecence from "@components/animations/SharedLayoutPrecence";
 
 const styles = {
   container:
-    "bg-rose-500 flex justify-center px-20 py-20 flex-wrap gap-8 h-[150vh]",
+    "bg-rose-500 flex justify-center px-20 py-20 flex-wrap gap-8 h-full",
 };
 
 const Index: NextPage = () => {
@@ -30,6 +31,7 @@ const Index: NextPage = () => {
       <InfinityBox />
       <ChildrenVar />
       <Toggle />
+      <SharedLayoutPrecence />
     </div>
   );
 };
