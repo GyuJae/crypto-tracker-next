@@ -3,7 +3,7 @@ import { useRef } from "react";
 
 const styles = {
   container:
-    "bg-rose-700 w-52 h-52 shadow-lg rounded-lg flex justify-center items-center",
+    "bg-rose-700 w-52 h-52 shadow-lg rounded-lg flex justify-center items-center overflow-hidden",
   item: "bg-white w-32 h-32 rounded-md",
 };
 

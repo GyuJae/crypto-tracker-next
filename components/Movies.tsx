@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import { makeImagePath } from "../libs/utils";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, Variants } from "framer-motion";
 import { IMovie } from "../libs/types";
 import Link from "next/link";
 
@@ -9,15 +9,18 @@ interface IMoviesprops {
   movies: IMovie[];
 }
 
-const rowVariants = {
+const rowVariants: Variants = {
   hidden: (back: boolean) => ({
     x: back ? -window.outerWidth : window.outerWidth,
+    opacity: 0,
   }),
   visible: {
     x: 0,
+    opacity: 1,
   },
   exit: (back: boolean) => ({
     x: back ? window.outerWidth : -window.outerWidth,
+    opacity: 0,
   }),
 };
 
