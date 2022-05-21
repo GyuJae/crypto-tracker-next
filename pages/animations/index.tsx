@@ -1,5 +1,4 @@
 import type { NextPage } from "next";
-import { AnimatePresence, motion, Variants } from "framer-motion";
 
 import Animation from "@components/animations/Animation";
 import VariantsComponent from "@components/animations/Variants";
@@ -14,8 +13,7 @@ import Toggle from "@components/animations/Toggle";
 import SharedLayoutPrecence from "@components/animations/SharedLayoutPrecence";
 
 const styles = {
-  container:
-    "bg-rose-500 flex justify-center px-20 py-20 flex-wrap gap-8 h-full",
+  container: "bg-rose-500 flex justify-center px-20 py-20 flex-wrap gap-8",
 };
 
 const Index: NextPage = () => {

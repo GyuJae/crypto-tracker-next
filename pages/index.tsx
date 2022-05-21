@@ -39,7 +39,7 @@ const Home: NextPage = () => {
               className="hover:bg-gray-700 hover:text-blue-700  border-b-2 border-gray-100 cursor-pointer"
               onClick={() =>
                 router.push({
-                  pathname: "/coins/[id]",
+                  pathname: "/chats/[id]",
                   query: { id: coin.id },
                 })
               }

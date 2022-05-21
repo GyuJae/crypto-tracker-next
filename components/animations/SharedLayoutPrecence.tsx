@@ -1,6 +1,15 @@
 import React, { useState } from "react";
 import { AnimatePresence, motion, Variants } from "framer-motion";
 
+const styles = {
+  wrapper: "w-96 bg-white rounded-lg shadow-lg flex flex-col",
+  headerContainer: "w-full flex items-center justify-around",
+  headerItemContainer:
+    "flex w-full justify-center h-12 items-center text-xs font-semibold relative cursor-pointer",
+  headerUnderline: "w-full h-[2px] bg-rose-400 absolute bottom-0",
+  item: "flex justify-center items-center text-9xl h-60",
+};
+
 interface IData {
   id: string;
   name: string;
@@ -33,31 +42,31 @@ const SharedLayoutPrecence = () => {
 
   const handleClickSelectedId = (id: string) => setSelcetedId(id);
   return (
-    <motion.div className="w-96  bg-white rounded-lg shadow-lg flex flex-col">
-      <motion.div className="w-full  flex items-center justify-around">
+    <div className={styles.wrapper}>
+      <div className={styles.headerContainer}>
         {data.map((item) => (
-          <motion.div
+          <div
             key={item.id}
-            className="flex w-full justify-center h-12 items-center text-xs font-semibold relative cursor-pointer"
+            className={styles.headerItemContainer}
             onClick={() => handleClickSelectedId(item.id)}
           >
             {item.icon} {item.name}
             {selectedId === item.id && (
               <motion.div
                 layoutId="underline"
-                className="w-full h-[2px] bg-rose-400 absolute bottom-0"
+                className={styles.headerUnderline}
               />
             )}
-          </motion.div>
+          </div>
         ))}
-      </motion.div>
+      </div>
       <AnimatePresence exitBeforeEnter>
         {data.map(
           (item) =>
             item.id === selectedId && (
               <motion.div
                 key={item.id}
-                className="flex justify-center items-center text-9xl h-60"
+                className={styles.item}
                 variants={variants}
                 initial="initial"
                 animate="animate"
@@ -69,7 +78,7 @@ const SharedLayoutPrecence = () => {
             )
         )}
       </AnimatePresence>
-    </motion.div>
+    </div>
   );
 };
 
